@@ -1,168 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-205483879-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-205483879-1', {
-      'linker': {
-        'domains': ['webtech.dev.br','github.io']
-      }
-    });
-    </script>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Font Awesome CDNS -->
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
-      crossorigin="anonymous"
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Explore five colour palettes, copy HEX values, and check black and white text contrast against WCAG AA thresholds."
     />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Custom styles CSS -->
-    <link href="style.css" rel="stylesheet" />
-    <title>Color Picker</title>
+    <title>Color Picker — palette &amp; contrast explorer</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="app.js"></script>
   </head>
   <body>
+    <a class="skip-link" href="#results">Skip to colour results</a>
     <main>
-      <div id="reset-color">
-        <div
-          id="colorReset"
-          class="button reset"
-          onclick="showColorCode(this.id)"
-        >
-          <i class="fas fa-undo-alt fa-2x"></i>
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">A little colour, a clearer choice</p>
+          <h1>Color Picker<span aria-hidden="true">.</span></h1>
+          <p class="intro">
+            Explore a palette. Copy a shade. Find out how your text holds up.
+          </p>
         </div>
-      </div>
-      <div id="colors-nav">
-        <div
-          id="colorIndigo"
-          class="button color-49599b"
-          onclick="showColorCode(this.id);"
-        >
-          Indigo
-        </div>
-        <div
-          id="colorAmber"
-          class="button color-ffa726"
-          onclick="showColorCode(this.id);"
-        >
-          Amber
-        </div>
-        <div
-          id="colorOrange"
-          class="button color-e65100"
-          onclick="showColorCode(this.id);"
-        >
-          Orange
-        </div>
-        <div
-          id="colorGreen"
-          class="button color-2e7d32"
-          onclick="showColorCode(this.id);"
-        >
-          Green
-        </div>
-        <div
-          id="colorBlueGrey"
-          class="button color-263238"
-          onclick="showColorCode(this.id);"
-        >
-          Blue Grey
-        </div>
-      </div>
-      <div id="color-accessibility">
-        <!-- Primary -->
-        <div color="#" class="scheme">
-          <table id="table-p">
-            <tr>
-              <th rowspan="3" id="table-p-header">
-                <p>Primary</p></br>
-                <p id="color-code-p-text"></p>
-                <p class="copyToClipboard" id="copy-to-clipboard-p"  onclick="copyToClipboard(this.id)"></p>
-              </th>
-              
-              <th><span class="large-text">Aa</span> Large Text</th>
-              <th><span class="normal-text">Aa</span> Normal Text</th>
-            </tr>
-            <tr>
-              <td class="table-white-text">White Text </td>
-              <td class="copyToClipboard" id="color-code-legibility-w-p" onclick="copyToClipboard(this.id)"></td>
-            </tr>
-            <tr>
-              <td >Black Text</td>
-              <td class="copyToClipboard" id="color-code-legibility-b-p" onclick="copyToClipboard(this.id)"></td>
-            </tr>
-          </table>
-        </div>
-        <!-- Light END  -->
-        <!-- P — Light  -->
-        <div color="#" class="scheme">
-          <table id="table-l">
-            <tr>
-              <th rowspan="3" id="table-l-header">
-                <p>P — Light</p></br>
-                <p id="color-code-l-text"></p>
-                <p class="copyToClipboard" id="copy-to-clipboard-l" onclick="copyToClipboard(this.id)"></p>
-              </th>
-              <th><span class="large-text">Aa</span> Large Text</th>
-              <th><span class="normal-text">Aa</span> Normal Text</th>
-            </tr>
-            <tr>
-              <td class="table-white-text">White Text 2</td>
-              <td class="copyToClipboard" id="color-code-legibility-w-l" onclick="copyToClipboard(this.id)"></td>
-            </tr>
-            <tr>
-              <td>Black Text</td>
-              <td class="copyToClipboard" id="color-code-legibility-b-l" onclick="copyToClipboard(this.id)"></td>
-            </tr>
-          </table>
-        </div>
-        <!-- P — Light END  -->
-        <!-- P — Dark  -->
-        <div color="#" class="scheme">
-          <table id="table-d">
-            <tr>
-              <th rowspan="3" id="table-d-header">
-                <p>P — Light</p></br>
-                <p id="color-code-d-text"></p>
-                <p class="copyToClipboard" id="copy-to-clipboard-d" onclick="copyToClipboard(this.id)"></p>
-              </th>
-              <th><span class="large-text">Aa</span> Large Text</th>
-              <th><span class="normal-text">Aa</span> Normal Text</th>
-            </tr>
-            <tr>
-              <td class="table-white-text">White Text 2</td>
-              <td class="copyToClipboard" id="color-code-legibility-w-d" onclick="copyToClipboard(this.id)"></td>
-            </tr>
-            <tr>
-              <td>Black Text</td>
-              <td class="copyToClipboard" id="color-code-legibility-b-d" onclick="copyToClipboard(this.id)"></td>
-            </tr>
-          </table>
-        </div>
-        <!-- P — Dark END  -->
-      </div>
-    </main>
+        <button id="reset" class="reset" type="button">
+          Reset to Indigo <span aria-hidden="true">↺</span>
+        </button>
+      </header>
 
-    <!-- Jquery CDN-->
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.slim.js"
-      integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
-      crossorigin="anonymous"
-    ></script>
-    <!-- myApp JS-->
-    <script src="app.js"></script>
+      <section aria-labelledby="palette-heading">
+        <h2 id="palette-heading" class="section-label">
+          01 / Choose a palette
+        </h2>
+        <div
+          id="palettes"
+          class="palettes"
+          role="group"
+          aria-label="Colour palettes"
+        ></div>
+      </section>
+
+      <section id="results" tabindex="-1" aria-labelledby="results-heading">
+        <div class="results-header">
+          <h2 id="results-heading" class="section-label">
+            02 / Explore the shades
+          </h2>
+          <p id="selection">Indigo palette</p>
+        </div>
+        <div id="shades" class="shades"></div>
+      </section>
+
+      <p
+        id="status"
+        class="status"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></p>
+      <aside class="note" aria-labelledby="contrast-heading">
+        <h2 id="contrast-heading">What does “AA pass” mean?</h2>
+        <p>
+          Normal text needs at least <strong>4.5:1</strong> contrast; large text
+          needs <strong>3:1</strong>. Large means at least 24 CSS px, or about
+          18.7 px when bold. Pass/fail uses the full ratio, before rounding.
+        </p>
+        <p>
+          These checks compare solid sRGB backgrounds with pure black or white
+          text. They do not certify an entire design as accessible.
+          <a
+            href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+            >Read the WCAG contrast guidance
+            <span aria-hidden="true">↗</span></a
+          >
+        </p>
+      </aside>
+      <footer>
+        HTML, CSS &amp; a little JavaScript. No account. No tracking.
+      </footer>
+      <noscript
+        ><p>
+          Enable JavaScript to choose palettes and calculate contrast.
+        </p></noscript
+      >
+    </main>
   </body>
 </html>

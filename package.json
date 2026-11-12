@@ -1,0 +1,20 @@
+{
+  "name": "color-picker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A dependency-free palette and WCAG AA text-contrast explorer",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "check": "node --check app.js && node --check color.js && node --check scripts/browser-check.cjs",
+    "serve": "python3 -m http.server 8080 --bind 127.0.0.1",
+    "test:browser": "node scripts/browser-check.cjs"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "playwright": "^1.65.0"
+  }
+}
