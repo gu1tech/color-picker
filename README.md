@@ -1,6 +1,8 @@
 # Color Picker
 
-A small, framework-free palette explorer: compare primary, light and dark shades, copy HEX values, and check black or white text against WCAG AA contrast thresholds.
+A frontend-only palette explorer built with HTML, CSS and JavaScript. Compare primary, light and dark shades, copy HEX values, and check black or white text against WCAG AA contrast thresholds.
+
+**[Open the live demo](https://gu1tech.github.io/color-picker/)** — use it directly in your browser. No installation, account or backend is required.
 
 ![Color Picker showing the Indigo palette](docs/preview.png)
 
@@ -12,18 +14,6 @@ A small, framework-free palette explorer: compare primary, light and dark shades
 - Separate AA pass/fail results for normal and large text, with real text samples.
 - Keyboard-operable palette buttons, visible focus states and copy-status announcements.
 - Responsive layout with no runtime dependencies, remote fonts, analytics or account requirement.
-
-## Run locally
-
-From the repository folder:
-
-```sh
-python3 -m http.server 8080 --bind 127.0.0.1
-```
-
-Open [http://127.0.0.1:8080](http://127.0.0.1:8080). The address means your own computer. No package installation or build step is needed to use the app. Stop the server with `Ctrl+C`.
-
-Use a local HTTP server rather than opening `index.html` directly: browsers restrict JavaScript module loading from `file://` URLs. Any static server that serves JavaScript with the correct MIME type will work.
 
 ## Use it
 
@@ -67,7 +57,25 @@ docs/preview.png           Screenshot of the implemented interface
 
 `app.js` uses event listeners and DOM creation rather than inline handlers or a separate branch per palette. Colour data lives in one place, so navigation swatches and result cards stay consistent.
 
-## Development checks
+## Local development
+
+To change the code, clone or download the repository and serve its static files locally.
+For example, if Python 3 is installed, run this from the repository folder:
+
+```sh
+python3 -m http.server 8080 --bind 127.0.0.1
+```
+
+Open [http://127.0.0.1:8080](http://127.0.0.1:8080) and stop the server with `Ctrl+C` when finished.
+`127.0.0.1` means your own computer. Python is only a convenient static-file server;
+the application logic runs entirely in the browser. Any suitable static server will work.
+
+The app uses JavaScript modules, which browsers restrict when opening `index.html`
+directly through a `file://` URL. Use the hosted demo or a local static server instead.
+There is no application build step.
+
+### Checks
+
 
 Node.js 22.12+ is needed for the development tools, not for running the website.
 
@@ -103,12 +111,12 @@ UPDATE_PREVIEW=1 npm run test:browser
 
 ## Publish as a static site
 
-Serve these files from a static host that supports JavaScript modules. GitHub Pages can serve the repository root; it requires no compilation. Enable it through the repository settings when you are ready. This repository does not automatically publish a site.
+The [live demo](https://gu1tech.github.io/color-picker/) is hosted on GitHub Pages. To host your own copy, serve the repository root from a static host that supports JavaScript modules. No backend or compilation is required. The checks workflow tests the code; it does not configure hosting for a fork.
 
 ## Development history and AI assistance
 
-The existing project began as a plain HTML/CSS/JavaScript palette experiment. This revision was developed with OpenAI Codex assistance: replacing hard-coded legibility labels with calculated contrast, consolidating repeated logic, improving the controls, and adding tests and documentation. Existing Git history is preserved. The original project should not be described as AI-generated retroactively.
+Originally built as an HTML/CSS/JavaScript palette experiment. Later improvements were developed with OpenAI Codex assistance: calculated contrast, simpler palette rendering, keyboard controls, clipboard handling, tests and documentation. The original development history is preserved.
 
 ## License
 
-No project license has been selected in this repository. Public source availability does not itself grant a reuse license; the repository owner should choose one before inviting redistribution. Development dependencies retain their own licenses.
+No project license is currently included. Development dependencies retain their own licenses.
